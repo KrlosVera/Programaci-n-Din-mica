@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Dinámica - Maximizar Ingresos</title>
+    <link rel="icon" href="imagenes/icono.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Freeman&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+            border-radius: 10px;
+            /* Bordes redondeados para la tabla */
+            overflow: hidden;
+            /* Asegura que los bordes redondeados se vean bien */
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+            border-radius: 5px;
+            /* Bordes redondeados para las celdas */
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Pantalla de carga -->
+    <div id="loader">
+        <div class="background-watermark"></div> <!-- Fondo con marcas de agua -->
+        <div class="circle"></div> <!-- Círculo que se expande -->
+        <img src="Logouniamazonia.png" alt="Logo" />
+    </div>
+
+    <div class="titulo-container">
+        <h1>MAXIMIZACIÓN DE INGRESOS - 3 COMPAÑÍAS</h1>
+    </div>
+    
+    <p class="instrucciones">Distribuya los días entre las compañías para maximizar sus ingresos.</p>
+
+
+    <main>
+        <form id="datos-form">
+            <div class="form-group">
+                <label for="dias">Número de días disponibles:</label>
+                <input type="number" id="dias" name="dias" min="1" max="10" value="5">
+            </div>
+
+            <h3>Nombres de las Compañías:</h3>
+            <div class="compania-container">
+                <div class="form-group">
+                    <label for="nombre1">Compañía 1:</label>
+                    <input type="text" id="nombre1" value="Informatel">
+                </div>
+                <div class="form-group">
+                    <label for="nombre2">Compañía 2:</label>
+                    <input type="text" id="nombre2" value="Sistecom">
+                </div>
+                <div class="form-group">
+                    <label for="nombre3">Compañía 3:</label>
+                    <input type="text" id="nombre3" value="Tecnologic">
+                </div>
+            </div>
+
+
+            <button type="button" id="agregar-honorarios-btn">Generar Tabla</button>
+            <div></div>
+
+            <h3>Honorarios por día en cada compañía (millones de pesos):</h3>
+            <div id="inputs-honorarios"></div>
+
+            <button type="button" id="calcular-btn" style="display:none;">Calcular Mejor Solución</button>
+        </form>
+
+        <div id="resultado"></div>
+    </main>
+
+    <footer>
+        <p>Creado por Carlos Alberto Vera y Victor Manuel Sarrias - 2024</p>
+    </footer>
+
+    <script src="script.js"></script>
+    
+</body>
+
+</html>

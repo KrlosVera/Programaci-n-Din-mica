@@ -1,0 +1,335 @@
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 10px; /* Margen reducido */
+    background: linear-gradient(#dddfe2,#7092d1);
+    /*background-color: #f4f4f9; /* Color de fondo claro */
+}
+
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.titulo-container {
+    background: linear-gradient(135deg, #4b6cb7, #182848); /* Degradado de color */
+    color: white; /* Color del texto */
+    padding: 20px; /* Espaciado alrededor del título */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center; /* Centrar texto */
+    margin: 20px 0; /* Margen arriba y abajo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+}
+
+.titulo-container h1 {
+    margin: 0; /* Eliminar márgenes del h1 para evitar espacios innecesarios */
+}
+
+h1 {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    color: #c1c6cc; /* Color del texto del encabezado */
+    font-size: 2em; /* Tamaño de fuente del encabezado reducido */
+    margin-bottom: 15px; /* Espacio debajo del encabezado reducido */
+}
+
+p {
+    text-align: center;
+    color: #555; /* Color del texto del párrafo */
+    font-size: 1em; /* Tamaño de fuente del párrafo reducido */
+    margin-bottom: 15px; /* Espacio debajo del párrafo reducido */
+}
+
+form {
+    text-align: center;
+    margin-bottom: 15px; /* Margen inferior reducido */
+}
+
+input[type="number"] {
+    width: 60px; /* Ancho de los campos de entrada reducido */
+    margin: 5px;
+    padding: 6px; /* Espaciado interno reducido */
+    border: 2px solid #007bff; /* Borde azul */
+    border-radius: 4px; /* Bordes redondeados ajustados */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+    font-size: 0.9em; /* Tamaño de fuente del input reducido */
+}
+
+input[type="number"]:focus {
+    border-color: #0056b3; /* Cambio de color del borde al enfocar */
+    outline: none; /* Sin contorno predeterminado */
+    box-shadow: 0 0 5px rgba(0, 91, 187, 0.5); /* Sombra suave al enfocar */
+}
+
+button {
+    margin: 30px; /* Margen reducido */
+    padding: 8px 15px; /* Espaciado interno ajustado */
+    font-size: 0.9em; /* Tamaño de fuente reducido */
+    color: white; /* Color del texto en los botones */
+    background-color: #007bff; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados ajustados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transición suave para el fondo y transformación */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra en los botones */
+}
+
+button:hover {
+    background-color: #0056b3; /* Cambio de color del botón al pasar el mouse */
+    transform: translateY(-1px); /* Efecto de elevación al pasar el mouse */
+}
+
+#resultado {
+    text-align: center;
+    margin-top: 15px; /* Margen superior reducido */
+    /*font-weight: bold;*/
+    color: #333; /* Color del texto del resultado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#inputs-honorarios {
+    max-width: 450px; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto;   /* Centra el contenedor horizontalmente */
+    padding: 8px;    /* Espaciado interno reducido */
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 4px; /* Bordes redondeados ajustados */
+    background-color: #fff; /* Color de fondo */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+#inputs-honorarios div {
+    display: flex;
+    justify-content: center;
+    margin: 4px 0; /* Margen vertical reducido */
+    border: 1px solid #ddd; /* Borde ligero para cada fila */
+    border-radius: 4px; /* Bordes redondeados ajustados */
+    padding: 8px; /* Espaciado interno reducido */
+    transition: background-color 0.3s; /* Transición suave para el fondo */
+}
+
+#inputs-honorarios div:hover {
+    background-color: #97e9b9; /* Color de fondo al pasar el mouse */
+}
+
+#inputs-honorarios label {
+    width: 90px; /* Ancho fijo para las etiquetas reducido */
+    text-align: center; /* Centra el texto */
+    font-weight: bold; /* Negrita para los encabezados */
+    color: #002ca5; /* Color de texto de las etiquetas */
+}
+
+#inputs-honorarios input[type="number"] {
+    margin: 0 5px; /* Espaciado lateral ajustado */
+    width: 50px; /* Ancho del input más pequeño para ajustarse */
+    font-size: 0.9em; /* Tamaño de fuente del input reducido */
+}
+
+/* Estilos para tablas de S3, S2, S1 */
+#resultado table {
+    border-collapse: collapse; /* Colapsa los bordes de las celdas */
+    width: auto; /* Ajusta el ancho de acuerdo al contenido */
+    margin: 13px 0; /* Esto agrega espacio entre las tablas */
+    font-size: 1em; /* Tamaño de fuente más pequeño para compactar */
+    color: #62646b;
+    
+}
+
+#resultado th, #resultado td {
+    border: 5px solid #f7f6f6; /* Borde negro */
+    padding: 3px 15px; /* Espaciado interno reducido */
+    text-align: center; /* Alineación centrada */
+    
+}
+/*tabla de resultados*/
+#resultado th {
+    background-color: #4b5768; /* Color de fondo para encabezados */
+    font-weight: 600; /* Negrita para encabezados */
+    font-size: 20px;
+    color: #dbdcdd;
+}
+
+
+.mejor-ganancia {
+    font-size: 2em; /* Tamaño para "Mejor Ganancia:" */
+    font-family: 'Poppins', sans-serif; /* Tipo de letra */
+    font-weight: bold; /* Negrita */
+    color: #0056b3;
+}
+
+.ganancia-resultado {
+    font-size: 1em; /* Tamaño mayor para el resultado */
+    font-family: 'Poppins', sans-serif; /* Tipo de letra */
+    font-weight: bold; /* Negrita */
+    color: #0056b3;
+}
+
+.solucion {
+    margin-top: 1px; /* Ajusta el valor según sea necesario */
+}
+
+.form-group1{
+
+    color: rgb(61, 59, 59);
+}
+.form-group2{
+
+    color: rgb(6, 114, 117);
+}
+.form-group3{
+
+    color: rgb(6, 114, 117);
+}
+
+.tabla-s1 {
+   /* border: 5px solid rgb(78, 78, 165);*/
+    background-color: #A9CCE3 ; /* Color de fondo para S1 */
+    border-radius: 5px 30px 1000px 1000px;
+    
+    
+}
+
+.tabla-s2 {
+    border: 1px solid green;
+    background-color: #98FB98; /* Color de fondo para S2 */
+}
+
+.tabla-s3 {
+    border: 1px solid red;
+    background-color: #DDA0DD; /* Color de fondo para S3 */
+}
+
+/* Otros estilos que desees aplicar */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 40px;
+    -moz-border-radius: 20px;
+        padding: 2px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+.compania-container {
+    background-color: #f8f9fa; /* Color de fondo claro */
+    border: 2px solid #007bff; /* Borde azul */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    margin: 20px auto; /* Margen superior e inferior, centrado */
+    width: 40%; /* Ancho del contenedor */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Espacio entre los campos */
+}
+
+.form-group label {
+    display: block; /* Etiqueta en bloque para mejor alineación */
+    margin-bottom: 5px; /* Espacio entre etiqueta y campo */
+    color: #333; /* Color del texto */
+}
+
+.form-group input[type="text"] {
+    width: 100%; /* Ancho completo del campo */
+    padding: 8px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 4px; /* Bordes redondeados */
+    transition: border-color 0.3s; /* Transición suave para el borde */
+}
+
+.form-group input[type="text"]:focus {
+    border-color: #007bff; /* Cambio de color al enfocar */
+    outline: none; /* Sin contorno */
+}
+
+
+/* Pantalla de carga */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#076e3b, #dadfe9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden; /* Asegura que las marcas de agua no se desborden */
+}
+
+/* Fondo con marcas de agua */
+.background-watermark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Marcas de agua individuales */
+.watermark {
+    position: absolute;
+    opacity: 0.1; /* Baja opacidad para un efecto de marca de agua */
+    background-size: 50px; /* Ajusta el tamaño */
+    width: 50px; /* Ajusta el tamaño */
+    height: 50px; /* Ajusta el tamaño */
+}
+
+/* Imagen del logo */
+#loader img {
+    width: 200px; /* Tamaño del logo */
+    position: relative; /* Para posicionar con respecto al círculo */
+    animation: pulse 1.5s ease-in-out infinite; /* Animación de pulso */
+}
+
+/* Círculo que rodea la imagen */
+.circle {
+    position: absolute;
+    width: 250px; /* Tamaño inicial del círculo */
+    height: 250px;
+    border-radius: 50%;
+    animation: expand 1.5s ease-in-out infinite; /* Animación de expansión */
+    box-shadow: 0 0 20px 15px rgba(255, 255, 255, 0.5); /* Sombra inicial */
+}
+
+/* Animación de pulso para la imagen */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Animación de expansión y difuminado para el círculo */
+@keyframes expand {
+    0% {
+        transform: scale(1); /* Comienza en el tamaño inicial */
+        opacity: 1;
+        box-shadow: 0 0 20px 15px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        transform: scale(1.8); /* Se expande más para un difuminado completo */
+        opacity: 0; /* Se desvanece al final */
+        box-shadow: 0 0 40px 30px rgba(255, 255, 255, 0); /* Más difuso y transparente */
+    }
+}
+
+footer {
+    text-align: center; /* Centra el texto */
+    margin-top: 20px; /* Margen superior para separar del contenido anterior */
+    padding: 10px; /* Espaciado interno */
+    background-color: #f2f2f2; /* Color de fondo */
+    border-top: 1px solid #ccc; /* Línea superior */
+    color: #555; /* Color del texto */
+    font-size: 0.9em; /* Tamaño de fuente reducido */
+}
+
