@@ -25,6 +25,103 @@ body {
     margin: 0; /* Eliminar márgenes del h1 para evitar espacios innecesarios */
 }
 
+.botones-container {
+    margin-top: 4px; /* Reduce el espaciado superior opcional */
+    margin-bottom: 4px; /* Puedes añadir margen inferior para controlar el espacio abajo */
+    text-align: center; /* Alinea el contenido del contenedor al centro */
+}
+
+.boton-imprimir {
+    padding: 10px 20px; /* Espaciado interno */
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4CAF50; /* Color del botón */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave */
+    margin-left: 2px; /* Añade un margen izquierdo para separar del otro botón */
+    margin-top: 0; /* Elimina el margen superior del botón */
+    margin-bottom: 0; /* Elimina el margen inferior del botón */
+}
+
+/* Estilos para el botón */
+#toggle-instrucciones-btn {
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0; /* Elimina el margen superior del botón */
+    margin-bottom: 0; /* Elimina el margen inferior del botón */
+}
+
+/* Cambios de color al pasar el cursor */
+#toggle-instrucciones-btn:hover,
+.boton-imprimir:hover {
+    background-color: #45a049; /* Color del botón al pasar el cursor */
+}
+
+.icono-btn {
+    width: 18px; /* Ajusta el tamaño del ícono a un tamaño más pequeño */
+    height: 18px; /* Asegúrate de que el alto sea igual al ancho para mantener la proporción */
+    margin-right: 6px; /* Espacio entre el ícono y el texto del botón */
+    vertical-align: middle; /* Alineación vertical */
+    display: inline-block; /* Para asegurar que se trate como un bloque en línea */
+    /* Si es necesario, puedes usar line-height para ajustar la alineación */
+}
+
+
+
+/* Estilos para las instrucciones */
+.instrucciones-container {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.instrucciones-container h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.instrucciones-container p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.botonimprimir {
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.botonimprimir:hover {
+    background-color: #45a049;
+}
+
+.botonimprimir:focus {
+    outline: none;
+    box-shadow: 0 0 5px #4CAF50;
+}
+
 h1 {
     font-family: "Poppins", sans-serif;
     text-align: center;
@@ -43,6 +140,18 @@ p {
 form {
     text-align: center;
     margin-bottom: 15px; /* Margen inferior reducido */
+}
+
+.formulario-group {
+    display: flex; /* Usar flexbox para alinear elementos */
+    flex-direction: column; /* Alinear verticalmente */
+    align-items: center; /* Centrar horizontalmente */
+    margin: 20px; /* Espacio alrededor del contenedor */
+}
+
+.formulario-group label {
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el input */
+    color: #333; /* Color del texto */
 }
 
 input[type="number"] {
@@ -221,11 +330,17 @@ th, td {
     padding: 20px; /* Espaciado interno */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
     margin: 20px auto; /* Margen superior e inferior, centrado */
-    width: 40%; /* Ancho del contenedor */
+    width: 40%; /* Ajusta el ancho del contenedor según sea necesario */
+    display: flex; /* Usar flexbox */
+    flex-wrap: wrap; /* Permitir que los elementos se muevan a la siguiente línea si no hay suficiente espacio */
+    justify-content: space-between; /* Espacio entre los elementos */
 }
 
 .form-group {
-    margin-bottom: 15px; /* Espacio entre los campos */
+    margin: 5px; /* Espacio entre los grupos */
+    display: flex;
+    flex-direction: column; /* Alinear la etiqueta y el campo de texto en columna */
+    flex: 1 1 30%; /* Flexibilidad y tamaño mínimo para que ocupen espacio proporcionalmente */
 }
 
 .form-group label {
@@ -235,7 +350,7 @@ th, td {
 }
 
 .form-group input[type="text"] {
-    width: 100%; /* Ancho completo del campo */
+    width: 90%; /* Ancho completo del campo */
     padding: 8px; /* Espaciado interno */
     border: 1px solid #ccc; /* Borde ligero */
     border-radius: 4px; /* Bordes redondeados */
