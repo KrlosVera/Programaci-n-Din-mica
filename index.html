@@ -48,37 +48,60 @@
     </div>
 
     <div class="titulo-container">
-        <h1>MAXIMIZACIÓN DE INGRESOS - 3 COMPAÑÍAS</h1>
+        <h1>SOFTWARE PARA SOLUCIÓN DE PROBLEMAS DE ASIGNACIÓN DE RECURSOS EN PROGRAMACIÓN DINÁMICA</h1>
+    </div>
+
+    <div class="botones-container">
+        <!-- Botón para desplegar y ocultar instrucciones -->
+        <button id="toggle-instrucciones-btn" onclick="toggleInstrucciones()">
+            <img src="imagenes/instrucciones.png" alt="Icono Instrucciones" class="icono-btn"> Mostrar Instrucciones
+        </button>
+        <!-- Botón de imprimir -->
+        <button class="boton-imprimir" onclick="imprimirPagina()">
+            <img src="imagenes/imprimir.png" alt="Icono Imprimir" class="icono-btn"> Imp. Reporte
+        </button>
     </div>
     
-    <p class="instrucciones">Distribuya los días entre las compañías para maximizar sus ingresos.</p>
+
+     <!-- Contenedor para las instrucciones (oculto por defecto) -->
+     <div class="instrucciones-container" id="instrucciones" style="display: none;">
+         <h2>Instrucciones</h2>
+         <p>Este aplicativo web está diseñado para resolver problemas de programación dinámica enfocados en la optimización de la asignación de recursos.</p>
+         <p>Se ha limitado específicamente a aquellos problemas en los que es posible tomar decisiones de valor cero en cada etapa, a diferencia de otros enfoques de programación dinámica en los que se requiere al menos una decisión positiva en cada paso.</p>
+     </div>
+   
+
+     <!-- HACER UN RECUADRO QUE ESPECIFIQUE EL PROGRAMA QUE TIPO DE SOLUCION REALIZA -->
+    <p class="instrucciones">Distribuya los días entre las etapas para maximizar sus ingresos.</p>
 
 
     <main>
         <form id="datos-form">
-            <div class="form-group">
-                <label for="dias">Número de días disponibles:</label>
+            <div class="formulario-group">
+                <label for="dias">Digite el número de días disponibles:</label>
                 <input type="number" id="dias" name="dias" min="1" max="10" value="5">
             </div>
 
-            <h3>Nombres de las Compañías:</h3>
+            <h3>Establezca el Nombre para Cada Una de las Etapas:</h3>
             <div class="compania-container">
                 <div class="form-group">
-                    <label for="nombre1">Compañía 1:</label>
+                    <label for="nombre1">ETAPA 1 (S1):</label>
                     <input type="text" id="nombre1" value="Informatel">
                 </div>
                 <div class="form-group">
-                    <label for="nombre2">Compañía 2:</label>
+                    <label for="nombre2">ETAPA 2 (S2):</label>
                     <input type="text" id="nombre2" value="Sistecom">
                 </div>
                 <div class="form-group">
-                    <label for="nombre3">Compañía 3:</label>
+                    <label for="nombre3">ETAPA 3 (S3):</label>
                     <input type="text" id="nombre3" value="Tecnologic">
                 </div>
             </div>
 
+            <button type="button" id="agregar-honorarios-btn" onclick="generarTablaHonorarios()">Generar Tabla</button>
 
-            <button type="button" id="agregar-honorarios-btn">Generar Tabla</button>
+            <!-- Botón para restablecer el formulario -->
+            <button type="button" id="reset-btn">Restablecer</button>
             <div></div>
 
             <h3>Honorarios por día en cada compañía (millones de pesos):</h3>
@@ -91,7 +114,7 @@
     </main>
 
     <footer>
-        <p>Creado por Carlos Alberto Vera y Victor Manuel Sarrias - 2024</p>
+        <p>Desarrollado por Carlos Vera - Victor Sarrias - Universidad de la Amzonia - Modelos Deterministicos - Docente: Oscar Perez Tovar © 2024</p>
     </footer>
 
     <script src="script.js"></script>
