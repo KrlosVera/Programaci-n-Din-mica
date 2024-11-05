@@ -1,12 +1,52 @@
+// Se asignan los eventos al botón para generar la tabla de honorarios y calcular la ganancia máxima
 document.getElementById('agregar-honorarios-btn').addEventListener('click', generarTablaHonorarios);
 document.getElementById('calcular-btn').addEventListener('click', calcularMaximoIngreso);
+document.getElementById('reset-btn').addEventListener('click', restablecerFormulario);
 
+
+// Función para mostrar y ocultar las instrucciones
+function toggleInstrucciones() {
+    const instrucciones = document.getElementById('instrucciones');
+    const btn = document.getElementById('toggle-instrucciones-btn');
+    if (instrucciones.style.display === 'none') {
+        instrucciones.style.display = 'block';
+        btn.textContent = 'Ocultar Instrucciones';
+    } else {
+        instrucciones.style.display = 'none';
+        btn.textContent = 'Mostrar Instrucciones';
+    }
+}
+
+function imprimirPagina() {
+    window.print();
+}
+
+// Función para restablecer el formulario
+function restablecerFormulario() {
+    // Limpiar los campos de texto
+    document.getElementById('dias').value = 5; // Valor por defecto
+    document.getElementById('nombre1').value = 'Informatel';
+    document.getElementById('nombre2').value = 'Sistecom';
+    document.getElementById('nombre3').value = 'Tecnologic';
+
+    // Limpiar los honorarios
+    const contenedor = document.getElementById('inputs-honorarios');
+    contenedor.innerHTML = ''; // Limpiar cualquier tabla anterior
+
+    // Limpiar el resultado
+    document.getElementById('resultado').innerHTML = '';
+
+    // Ocultar el botón de calcular
+    document.getElementById('calcular-btn').style.display = 'none';
+}
+
+// Función para generar la tabla de honorarios de los días y empresas
 function generarTablaHonorarios() {
     const dias = parseInt(document.getElementById('dias').value);
     const contenedor = document.getElementById('inputs-honorarios');
     contenedor.innerHTML = ''; // Limpiar cualquier tabla anterior
 
-    // Obtener los nombres de las compañías
+    // Obtiene los nombres de las empresas ingresadas por el usuario
     const nombre1 = document.getElementById('nombre1').value;
     const nombre2 = document.getElementById('nombre2').value;
     const nombre3 = document.getElementById('nombre3').value;
@@ -21,6 +61,7 @@ function generarTablaHonorarios() {
         </div>
     `;
 
+     // Genera filas de entrada para cada día (incluyendo día 0) para ingresar honorarios
     for (let i = 0; i <= dias; i++) { // Mantener el día cero
         contenedor.innerHTML += `
             <div>
@@ -31,10 +72,14 @@ function generarTablaHonorarios() {
             </div>`;
     }
 
-    // Mostrar el botón de calcular
+    // Mostrar el botón de calcular al finalizar la tabla
     document.getElementById('calcular-btn').style.display = 'inline-block';
-}
 
+    // Desplazarse hacia el contenedor de la tabla generada
+    contenedor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+// Función para calcular la máxima ganancia y la distribución óptima de días
+ // Almacena los honorarios ingresados en una matriz para cada día y empresa
 function calcularMaximoIngreso() {
     const dias = parseInt(document.getElementById('dias').value);
     let honorarios = [];
@@ -54,6 +99,7 @@ function calcularMaximoIngreso() {
     const nombre3 = document.getElementById('nombre3').value;
 
     // Generar las tablas de cada empresa en el orden correcto: S3, S2, S1
+    // //Genera tablas de ingresos máximos para cada empresa en orden (S3, S2, S1)
     let maxGanancia3 = Array(dias + 1).fill(0);
     let tabla3 = generarTabla(nombre3, dias, honorarios, 2, maxGanancia3);
 
@@ -76,6 +122,7 @@ function calcularMaximoIngreso() {
 
             let ganancia = honorarios[i][0] + honorarios[j][1] + honorarios[k][2];
 
+            // Actualiza la mejor ganancia y las soluciones óptimas
             if (ganancia > mejorGanancia) {
                 mejorGanancia = ganancia;
                 mejoresSoluciones = [{ empresa1: i, empresa2: j, empresa3: k }];
@@ -89,6 +136,7 @@ function calcularMaximoIngreso() {
     mostrarResumenFinal(mejorGanancia, mejoresSoluciones, nombre1, nombre2, nombre3);
 }
 
+// Función para mostrar el resumen de resultados
 function mostrarResumenFinal(ganancia, soluciones, nombre1, nombre2, nombre3) {
     let resultadoDiv = document.getElementById('resultado');
     resultadoDiv.innerHTML += `
@@ -103,9 +151,10 @@ function mostrarResumenFinal(ganancia, soluciones, nombre1, nombre2, nombre3) {
     });
 }
 
+// Genera la tabla de ingresos máximos para cada empresa
 function generarTabla(empresa, dias, honorarios, indice, maxGanancia, maxGananciaPrev = []) {
     // Definir una clase específica para cada tabla (S1, S2, S3)
-    const claseTabla = `tabla-s${indice + 1}`;
+        const claseTabla = `tabla-s${indice + 1}`;
     let tabla = generarTablaInicial(dias, empresa, `S${indice + 1}`, `X${indice + 1}`, 'F*', claseTabla);
 
     // Determinar el último día ingresado
