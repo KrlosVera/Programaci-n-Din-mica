@@ -3,6 +3,10 @@ document.getElementById('agregar-honorarios-btn').addEventListener('click', gene
 document.getElementById('calcular-btn').addEventListener('click', calcularMaximoIngreso);
 document.getElementById('reset-btn').addEventListener('click', restablecerFormulario);
 
+// Variables para verificar si la tabla y la solución han sido generadas
+let tablaGenerada = false;
+let solucionGenerada = false;
+
 
 // Función para mostrar y ocultar las instrucciones
 function toggleInstrucciones() {
@@ -17,31 +21,38 @@ function toggleInstrucciones() {
     }
 }
 
-function imprimirPagina() {
-    window.print();
+
+
+// Función para validar los campos del formulario
+function validarFormulario() {
+    const dias = document.getElementById('dias').value;
+    const nombre1 = document.getElementById('nombre1').value;
+    const nombre2 = document.getElementById('nombre2').value;
+    const nombre3 = document.getElementById('nombre3').value;
+
+    // Verificar si el campo 'dias' está vacío o es igual a 0
+    if (!dias || dias <= 0) {
+        alert("Por favor, ingrese un número de días mayor a 0.");
+        return false; // Detener la ejecución si la validación falla
+    }
+
+    // Verificar si los campos de nombre de las etapas están vacíos
+    if (!nombre1 || !nombre2 || !nombre3) {
+        alert("Por favor, ingrese el nombre para cada una de las etapas (S1, S2, S3).");
+        return false;
+    }
+
+    return true; // Validación exitosa
 }
 
-// Función para restablecer el formulario
-function restablecerFormulario() {
-    // Limpiar los campos de texto
-    document.getElementById('dias').value = 5; // Valor por defecto
-    document.getElementById('nombre1').value = 'Informatel';
-    document.getElementById('nombre2').value = 'Sistecom';
-    document.getElementById('nombre3').value = 'Tecnologic';
 
-    // Limpiar los honorarios
-    const contenedor = document.getElementById('inputs-honorarios');
-    contenedor.innerHTML = ''; // Limpiar cualquier tabla anterior
-
-    // Limpiar el resultado
-    document.getElementById('resultado').innerHTML = '';
-
-    // Ocultar el botón de calcular
-    document.getElementById('calcular-btn').style.display = 'none';
-}
 
 // Función para generar la tabla de honorarios de los días y empresas
 function generarTablaHonorarios() {
+
+    // Llamar a la función de validación antes de generar la tabla
+    if (!validarFormulario()) return; // Si la validación falla, detener la ejecución
+
     const dias = parseInt(document.getElementById('dias').value);
     const contenedor = document.getElementById('inputs-honorarios');
     contenedor.innerHTML = ''; // Limpiar cualquier tabla anterior
@@ -61,7 +72,7 @@ function generarTablaHonorarios() {
         </div>
     `;
 
-     // Genera filas de entrada para cada día (incluyendo día 0) para ingresar honorarios
+    // Genera filas de entrada para cada día (incluyendo día 0) para ingresar honorarios
     for (let i = 0; i <= dias; i++) { // Mantener el día cero
         contenedor.innerHTML += `
             <div>
@@ -72,14 +83,61 @@ function generarTablaHonorarios() {
             </div>`;
     }
 
+     // Mostrar el título y el contenedor de honorarios
+     document.getElementById('titulo-honorarios').style.display = 'block'; // Muestra el <h3>
+     contenedor.style.display = 'block'; // Muestra el contenedor de los honorarios
+
     // Mostrar el botón de calcular al finalizar la tabla
     document.getElementById('calcular-btn').style.display = 'inline-block';
 
     // Desplazarse hacia el contenedor de la tabla generada
     contenedor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Indica que la tabla ha sido generada
+    tablaGenerada = true;
+
+    // Habilitar y mostrar el botón de restablecer
+    const resetBtn = document.getElementById('reset-btn');
+    resetBtn.disabled = false;  // Habilitar el botón
+    resetBtn.style.display = 'inline-block';  // Mostrar el botón
 }
+
+
+// Función para restablecer el formulario
+function restablecerFormulario() {
+
+    // Reinicia las variables de estado
+    tablaGenerada = false;
+    solucionGenerada = false;
+    
+    // Limpiar los campos de texto
+    document.getElementById('dias').value = 0; // Valor por defecto
+    document.getElementById('nombre1').value = '';
+    document.getElementById('nombre2').value = '';
+    document.getElementById('nombre3').value = '';
+
+    // Limpiar los honorarios
+    const contenedor = document.getElementById('inputs-honorarios');
+    contenedor.innerHTML = ''; // Limpiar cualquier tabla anterior
+
+    // Limpiar el resultado
+    document.getElementById('resultado').innerHTML = '';
+
+    // Ocultar el botón de calcular
+    document.getElementById('calcular-btn').style.display = 'none';
+
+    // Deshabilitar y ocultar el botón de restablecer después de reiniciar
+    const resetBtn = document.getElementById('reset-btn');
+    resetBtn.disabled = true;  // Deshabilitar el botón
+    resetBtn.style.display = 'none';  // Ocultar el botón
+
+    // Ocultar el título y el contenedor de honorarios
+    document.getElementById('titulo-honorarios').style.display = 'none'; // Ocultar el <h3>
+    contenedor.style.display = 'none'; // Ocultar el contenedor de los honorarios
+}
+
 // Función para calcular la máxima ganancia y la distribución óptima de días
- // Almacena los honorarios ingresados en una matriz para cada día y empresa
+// Almacena los honorarios ingresados en una matriz para cada día y empresa
 function calcularMaximoIngreso() {
     const dias = parseInt(document.getElementById('dias').value);
     let honorarios = [];
@@ -134,6 +192,20 @@ function calcularMaximoIngreso() {
 
     // Mostrar el resumen final con todas las combinaciones
     mostrarResumenFinal(mejorGanancia, mejoresSoluciones, nombre1, nombre2, nombre3);
+
+    solucionGenerada = true;
+
+    // Desplazarse hacia el contenedor de resultados
+    document.getElementById('resultado').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Función para imprimir la página con validación
+function imprimirPagina() {
+    if (tablaGenerada && solucionGenerada) {
+        window.print();
+    } else {
+        alert("No hay reporte para imprimir. Por favor, asegúrese de generar la tabla y la solución antes de imprimir.");
+    }
 }
 
 // Función para mostrar el resumen de resultados
@@ -149,12 +221,14 @@ function mostrarResumenFinal(ganancia, soluciones, nombre1, nombre2, nombre3) {
         resultadoDiv.innerHTML += `<p class="solucion">Solución ${index + 1}: ${solucion.empresa1} días en ${nombre1}, 
             ${solucion.empresa2} días en ${nombre2}, ${solucion.empresa3} días en ${nombre3}.</p>`;
     });
+
+
 }
 
 // Genera la tabla de ingresos máximos para cada empresa
 function generarTabla(empresa, dias, honorarios, indice, maxGanancia, maxGananciaPrev = []) {
     // Definir una clase específica para cada tabla (S1, S2, S3)
-        const claseTabla = `tabla-s${indice + 1}`;
+    const claseTabla = `tabla-s${indice + 1}`;
     let tabla = generarTablaInicial(dias, empresa, `S${indice + 1}`, `X${indice + 1}`, 'F*', claseTabla);
 
     // Determinar el último día ingresado
@@ -168,9 +242,9 @@ function generarTabla(empresa, dias, honorarios, indice, maxGanancia, maxGananci
 
         tabla += `<tr><td>${d}</td>`;
         let filaGanancias = [];
-        let diasOptimos = []; 
-        let maxFila = -Infinity; 
-        
+        let diasOptimos = [];
+        let maxFila = -Infinity;
+
         for (let i = 0; i <= dias; i++) {
             if (i > d) {
                 tabla += `<td></td>`;
@@ -202,8 +276,8 @@ function generarTabla(empresa, dias, honorarios, indice, maxGanancia, maxGananci
     }
     tabla += `</tbody></table>`;
     return tabla;
-}
 
+}
 
 function generarTablaInicial(dias, empresa, letra, letraX, letraF, claseTabla) {
     let encabezados = `<tr><th>Días</th>`;

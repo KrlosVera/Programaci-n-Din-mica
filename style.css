@@ -17,8 +17,9 @@ body {
     padding: 20px; /* Espaciado alrededor del título */
     border-radius: 10px; /* Bordes redondeados */
     text-align: center; /* Centrar texto */
-    margin: 20px 0; /* Margen arriba y abajo */
+    margin: 25px 0; /* Margen arriba y abajo */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    font-size: 13px; /* Ajusta el tamaño de la fuente a tu preferencia */
 }
 
 .titulo-container h1 {
@@ -92,6 +93,7 @@ body {
 
 .instrucciones-container h2 {
     color: #333;
+    font-size: 18px; /* Tamaño de fuente del párrafo reducido */
     margin-bottom: 10px;
 }
 
@@ -133,7 +135,7 @@ h1 {
 p {
     text-align: center;
     color: #555; /* Color del texto del párrafo */
-    font-size: 1em; /* Tamaño de fuente del párrafo reducido */
+    font-size: 13px; /* Tamaño de fuente del párrafo reducido */
     margin-bottom: 15px; /* Espacio debajo del párrafo reducido */
 }
 
@@ -198,6 +200,13 @@ button:hover {
     align-items: center;
 }
 
+#titulo-honorarios{
+    
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #38393b;
+}
+
 #inputs-honorarios {
     max-width: 450px; /* Ajusta el ancho máximo según tus necesidades */
     margin: 0 auto;   /* Centra el contenedor horizontalmente */
@@ -219,7 +228,7 @@ button:hover {
 }
 
 #inputs-honorarios div:hover {
-    background-color: #97e9b9; /* Color de fondo al pasar el mouse */
+    background-color: #afcfee; /* Color de fondo al pasar el mouse */
 }
 
 #inputs-honorarios label {
@@ -276,6 +285,8 @@ button:hover {
 
 .solucion {
     margin-top: 1px; /* Ajusta el valor según sea necesario */
+    color: #2c2929;
+    font-family: 'Poppins', sans-serif;
 }
 
 .form-group1{
@@ -439,12 +450,30 @@ th, td {
 }
 
 footer {
-    text-align: center; /* Centra el texto */
-    margin-top: 20px; /* Margen superior para separar del contenido anterior */
-    padding: 10px; /* Espaciado interno */
-    background-color: #f2f2f2; /* Color de fondo */
-    border-top: 1px solid #ccc; /* Línea superior */
-    color: #555; /* Color del texto */
-    font-size: 0.9em; /* Tamaño de fuente reducido */
+    text-align: center;
+    margin-top: 20px;
+    padding: 6px;
+    background-color: #f2f2f2;
+    border-top: 2px solid #164ce0;
+    color: #555;
+    font-size: 0.9em; /* Incrementar un poco el tamaño de la fuente */
+    font-family: "Poppins", sans-serif;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.8em; /* Incrementar el tamaño de la fuente para los párrafos */
+    line-height: 1.2; /* Mantener el interlineado más compacto */
+}
+
+footer span {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.9em; /* Incrementar el tamaño de los spans */
+}
+
+footer p:last-child {
+    font-size: 0.7em; /* Aumentar el tamaño del último párrafo (copyright) */
+    color: #777;
 }
 

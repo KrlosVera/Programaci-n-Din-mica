@@ -44,11 +44,11 @@
     <div id="loader">
         <div class="background-watermark"></div> <!-- Fondo con marcas de agua -->
         <div class="circle"></div> <!-- Círculo que se expande -->
-        <img src="Logouniamazonia.png" alt="Logo" />
+        <img src="imagenes/Logouniamazonia.png" alt="Logo" />
     </div>
 
     <div class="titulo-container">
-        <h1>SOFTWARE PARA SOLUCIÓN DE PROBLEMAS DE ASIGNACIÓN DE RECURSOS EN PROGRAMACIÓN DINÁMICA</h1>
+        <h1>APLICATIVO PARA SOLUCIÓN DE PROBLEMAS DE ASIGNACIÓN DE RECURSOS EN PROGRAMACIÓN DINÁMICA</h1>
     </div>
 
     <div class="botones-container">
@@ -61,17 +61,21 @@
             <img src="imagenes/imprimir.png" alt="Icono Imprimir" class="icono-btn"> Imp. Reporte
         </button>
     </div>
-    
 
-     <!-- Contenedor para las instrucciones (oculto por defecto) -->
-     <div class="instrucciones-container" id="instrucciones" style="display: none;">
-         <h2>Instrucciones</h2>
-         <p>Este aplicativo web está diseñado para resolver problemas de programación dinámica enfocados en la optimización de la asignación de recursos.</p>
-         <p>Se ha limitado específicamente a aquellos problemas en los que es posible tomar decisiones de valor cero en cada etapa, a diferencia de otros enfoques de programación dinámica en los que se requiere al menos una decisión positiva en cada paso.</p>
-     </div>
-   
 
-     <!-- HACER UN RECUADRO QUE ESPECIFIQUE EL PROGRAMA QUE TIPO DE SOLUCION REALIZA -->
+    <!-- Contenedor para las instrucciones (oculto por defecto) -->
+    <div class="instrucciones-container" id="instrucciones" style="display: none;">
+        <h2>Instrucciones</h2>
+        <p>Este aplicativo web está diseñado para resolver problemas de programación dinámica enfocados en la optimización 
+            de la asignación de recursos. La herramienta permite a los usuarios resolver de manera eficiente problemas que 
+            involucren la distribución de recursos en escenarios donde se deben tomar decisiones en etapas sucesivas.</p>
+        <p>Se ha limitado específicamente a aquellos problemas en los que es posible tomar decisiones de valor cero en
+            cada etapa, a diferencia de otros enfoques de programación dinámica en los que se requiere al menos una
+            decisión positiva en cada paso.</p>
+    </div>
+
+
+    <!-- HACER UN RECUADRO QUE ESPECIFIQUE EL PROGRAMA QUE TIPO DE SOLUCION REALIZA -->
     <p class="instrucciones">Distribuya los días entre las etapas para maximizar sus ingresos.</p>
 
 
@@ -79,33 +83,39 @@
         <form id="datos-form">
             <div class="formulario-group">
                 <label for="dias">Digite el número de días disponibles:</label>
-                <input type="number" id="dias" name="dias" min="1" max="10" value="5">
+                <input type="number" id="dias" name="dias" min="1" max="10" placeholder="Ej: 5">
             </div>
 
-            <h3>Establezca el Nombre para Cada Una de las Etapas:</h3>
+            <h3>Establezca el nombre para cada Una de las etapas:</h3>
             <div class="compania-container">
                 <div class="form-group">
                     <label for="nombre1">ETAPA 1 (S1):</label>
-                    <input type="text" id="nombre1" value="Informatel">
+                    <input type="text" id="nombre1" placeholder="Ingresa el nombre de S1">
                 </div>
                 <div class="form-group">
                     <label for="nombre2">ETAPA 2 (S2):</label>
-                    <input type="text" id="nombre2" value="Sistecom">
+                    <input type="text" id="nombre2" placeholder="Ingresa el nombre de S2">
                 </div>
                 <div class="form-group">
                     <label for="nombre3">ETAPA 3 (S3):</label>
-                    <input type="text" id="nombre3" value="Tecnologic">
+                    <input type="text" id="nombre3" placeholder="Ingresa el nombre de S3">
                 </div>
             </div>
 
-            <button type="button" id="agregar-honorarios-btn" onclick="generarTablaHonorarios()">Generar Tabla</button>
 
-            <!-- Botón para restablecer el formulario -->
-            <button type="button" id="reset-btn">Restablecer</button>
-            <div></div>
+            <!-- Botón para generar la tabla con ícono -->
+            <button type="button" id="agregar-honorarios-btn" onclick="generarTablaHonorarios()">
+                <img src="imagenes/GenTabla.png" alt="Icono Generar" class="icono-btn"> Generar Tabla
+            </button>
 
-            <h3>Honorarios por día en cada compañía (millones de pesos):</h3>
-            <div id="inputs-honorarios"></div>
+            <!-- Botón para restablecer el formulario con ícono (inicialmente deshabilitado) -->
+            <button type="button" id="reset-btn" onclick="restablecerFormulario()" style="display: none;">
+                <img src="imagenes/reset.png" alt="Icono Restablecer" class="icono-btn"> Generar Nueva Solución
+            </button>
+
+
+            <h3 id="titulo-honorarios" style="display: none;">Honorarios por día en cada compañía (millones de pesos):</h3>
+            <div id="inputs-honorarios" style="display: none;"></div>
 
             <button type="button" id="calcular-btn" style="display:none;">Calcular Mejor Solución</button>
         </form>
@@ -114,11 +124,15 @@
     </main>
 
     <footer>
-        <p>Desarrollado por Carlos Vera - Victor Sarrias - Universidad de la Amzonia - Modelos Deterministicos - Docente: Oscar Perez Tovar © 2024</p>
+        <p>Desarrollado por <span>Carlos Vera</span> y <span>Victor Sarrias</span></p>
+        <p>Universidad de la Amazonia</p>
+        <p>Curso de Modelos Determinísticos - Docente: <span>Oscar Pérez Tovar</span></p>
+        <p>&copy; 2024</p>
     </footer>
 
+
     <script src="script.js"></script>
-    
+
 </body>
 
 </html>
